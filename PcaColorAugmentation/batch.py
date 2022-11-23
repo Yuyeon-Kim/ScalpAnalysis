@@ -17,6 +17,7 @@ import glob
 image_list = []
 fname_list = []
 path = 'F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/ColorPreprocessing/test_images' # path of the original dataset folder
+alpha = 0.3
 
 base = os.listdir(path)
 for f in base:
@@ -42,7 +43,7 @@ for i in image_list:
     array_list.append(i_a)
     print("Image", n, ": Conversion successful.")
     n+=1
-#print("Array of original image: ", i_a) #To see the array
+print("Array of original image: ", i_a) #To see the array
 
 print("Conversion successful")
 print(type(i_a), i_a.shape)
@@ -51,14 +52,14 @@ print(type(i_a), i_a.shape)
 n=1
 aug_list=[]
 for a in array_list:
-    augmented = fancy_pca.fancy_pca(a)
-    aug_list.append(a)
+    augmented = fancy_pca.fancy_pca(a, alpha)
+    aug_list.append(augmented)
     print("Array",n, ":Augmentation successful")
     n += 1
-#print("Array of PCA augmented image: ", augmented) #To see the array
+print("Array of PCA augmented image: ", augmented) #To see the array
 
 # Convert Fancy PCA result back to PIL image
-path3 = "F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/pca_color_augmentation/res_images/" #path of the destination folder
+path3 = "F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/PcaColorAugmentation/res_images/" #path of the destination folder
 idx=0
 for aug in aug_list:
     i2 = Image.fromarray(aug)

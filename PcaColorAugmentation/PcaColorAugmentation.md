@@ -36,6 +36,10 @@ batch.py 코드 설명
 --------------
 
 - batch.py 파일을 실행한다.
+    - 분산 값을 원하는 대로 설정한다. (alpha, 기본값: 0.1)
+    ```
+    alpha = 0.1
+    ```
     - 이미지를 읽을 파일 경로 설정 (path)
     ```
     path = 'F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/ColorPreprocessing/test_images' # path of the original dataset folder
