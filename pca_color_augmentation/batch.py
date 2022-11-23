@@ -1,124 +1,71 @@
-# 窒坦: https://github.com/aparico/pca-color-augment
+# from: https://github.com/aparico/pca-color-augment
 
-import numpy as np
+from numpy import asarray
+import argparse
+import fancy_pca
+from PIL import Image
+import os
+import glob
 
+# Construct the argument parser and parse the arguments
+#ap = argparse.ArgumentParser()
+#ap.add_argument("-i", "--image", required = True,
+#	help = "Path to the image")
+#args = vars(ap.parse_args())
 
+# Load multiple images
+image_list = []
+fname_list = []
+path = 'F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/ColorPreprocessing/test_images' # path of the original dataset folder
 
-def fancy_pca(img, alpha_std=0.1):
-    '''
-    INPUTS:
-    img:  numpy array with (h, w, rgb) shape, as ints between 0-255)
-    alpha_std:  how much to perturb/scale the eigen vecs and vals
-                the paper used std=0.1
+base = os.listdir(path)
+for f in base:
+    # Extract the names of the files and put them in a list (fname_list)
+    fname = os.path.splitext(f)
+    fname_list.append(fname[0])
+    print(len(image_list)," image name has saved.")
 
-    RETURNS:
-    numpy image-like array as float range(0, 1)
+    # Load images and put them in a list (image_list)
+    im = Image.open(os.path.join(path, f))
+    image_list.append(im)
+    print("Inage", f, "has loaded.")
 
-    NOTE: Depending on what is originating the image data and what is receiving
-    the image data returning the values in the expected form is very important
-    in having this work correctly. If you receive the image values as UINT 0-255
-    then it's probably best to return in the same format. (As this
-    implementation does). If the image comes in as float values ranging from
-    0.0 to 1.0 then this function should be modified to return the same.
+# Load one image and show it
+# i = Image.open('test.jpg')
+# i.show(title="Original image")
 
-    Otherwise this can lead to very frustrating and difficult to troubleshoot
-    problems in the image processing pipeline.
+# Convert images to numpy arrays
+array_list =[]
+n=1
+for i in image_list:
+    i_a = asarray(i)
+    array_list.append(i_a)
+    print("Image", n, ": Conversion successful.")
+    n+=1
+#print("Array of original image: ", i_a) #To see the array
 
+print("Conversion successful")
+print(type(i_a), i_a.shape)
 
-    This is 'Fancy PCA' from:
-    # http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf
+# Perform the PCA color augmentation
+n=1
+aug_list=[]
+for a in array_list:
+    augmented = fancy_pca.fancy_pca(a)
+    aug_list.append(a)
+    print("Array",n, ":Augmentation successful")
+    n += 1
+#print("Array of PCA augmented image: ", augmented) #To see the array
 
-    #######################
-    #### FROM THE PAPER ###
-    #######################
-    "The second form of data augmentation consists of altering the intensities
-    of the RGB channels in training images. Specifically, we perform PCA on the
-    set of RGB pixel values throughout the ImageNet training set. To each
-    training image, we add multiples of the found principal components, with
-    magnitudes proportional to the corresponding eigenvalues times a random
-    variable drawn from a Gaussian with mean zero and standard deviation 0.1.
-    Therefore to each RGB image pixel Ixy = [I_R_xy, I_G_xy, I_B_xy].T
-    we add the following quantity:
-    [p1, p2, p3][メ1ル1, メ2ル2, メ3ル3].T
-
-    Where pi and ルi are ith eigenvector and eigenvalue of the 3 ／ 3 covariance
-    matrix of RGB pixel values, respectively, and メi is the aforementioned
-    random variable. Each メi is drawn only once for all the pixels of a
-    particular training image until that image is used for training again, at
-    which point it is re-drawn. This scheme approximately captures an important
-    property of natural images, namely, that object identity is invariant to
-    change."
-    ### END ###############
-
-    Other useful resources for getting this working:
-    # https://groups.google.com/forum/#!topic/lasagne-users/meCDNeA9Ud4
-    # https://gist.github.com/akemisetti/ecf156af292cd2a0e4eb330757f415d2
-    '''
-
-    orig_img = img.astype(float).copy()
-
-    img = img / 255.0  # rescale to 0 to 1 range
-
-    # flatten image to columns of RGB
-    img_rs = img.reshape(-1, 3)
-    # img_rs shape (640000, 3)
-
-    # center mean
-    img_centered = img_rs - np.mean(img_rs, axis=0)
-
-    # paper says 3x3 covariance matrix
-    img_cov = np.cov(img_centered, rowvar=False)
-
-    # eigen values and eigen vectors
-    eig_vals, eig_vecs = np.linalg.eigh(img_cov)
-
-#     eig_vals [0.00154689 0.00448816 0.18438678]
-
-#     eig_vecs [[ 0.35799106 -0.74045435 -0.56883192]
-#      [-0.81323938  0.05207541 -0.57959456]
-#      [ 0.45878547  0.67008619 -0.58352411]]
-
-    # sort values and vector
-    sort_perm = eig_vals[::-1].argsort()
-    eig_vals[::-1].sort()
-    eig_vecs = eig_vecs[:, sort_perm]
-
-    # get [p1, p2, p3]
-    m1 = np.column_stack((eig_vecs))
-
-    # get 3x1 matrix of eigen values multiplied by random variable draw from normal
-    # distribution with mean of 0 and standard deviation of 0.1
-    m2 = np.zeros((3, 1))
-    # according to the paper alpha should only be draw once per augmentation (not once per channel)
-    alpha = np.random.normal(0, alpha_std)
-
-    # broad cast to speed things up
-    m2[:, 0] = alpha * eig_vals[:]
-
-    # this is the vector that we're going to add to each pixel in a moment
-    add_vect = np.matrix(m1) * np.matrix(m2)
-
-
-    for idx in range(3):   # RGB
-        orig_img[..., idx] += add_vect[idx]
-
-
-
-    # for image processing it was found that working with float 0.0 to 1.0
-    # was easier than integers between 0-255
-    # orig_img /= 255.0
-    orig_img = np.clip(orig_img, 0.0, 255.0)
-
-    # orig_img *= 255
-    orig_img = orig_img.astype(np.uint8)
-
-    # about 100x faster after vectorizing the numpy, it will be even faster later
-    # since currently it's working on full size images and not small, square
-    # images that will be fed in later as part of the post processing before being
-    # sent into the model
-    #print("elapsed time: {:2.2f}".format(time.time() - start_time), "\n")
-
-    return orig_img
-
-
-
+# Convert Fancy PCA result back to PIL image
+path3 = "F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/pca_color_augmentation/res/" #path of the destination folder
+idx=0
+for aug in aug_list:
+    i2 = Image.fromarray(aug)
+    # print(fname_list)
+    while idx<= len(fname_list):
+        print(str(fname_list[idx])+"_1.jpg")
+        i2.save(path3+(str(fname_list[idx])+"_1.jpg"))
+        break
+    idx+=1
+    print("Augmented image", idx, "saved.")
