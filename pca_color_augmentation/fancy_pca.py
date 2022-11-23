@@ -97,7 +97,8 @@ def fancy_pca(img, alpha_std=0.1):
 
     # this is the vector that we're going to add to each pixel in a moment
     add_vect = np.matrix(m1) * np.matrix(m2)
-
+    # print("values to be added matrix") # to see values added
+    # print(add_vect)
 
     for idx in range(3):   # RGB
         orig_img[..., idx] += add_vect[idx]
