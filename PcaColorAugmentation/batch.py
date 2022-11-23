@@ -58,7 +58,7 @@ for a in array_list:
 #print("Array of PCA augmented image: ", augmented) #To see the array
 
 # Convert Fancy PCA result back to PIL image
-path3 = "F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/pca_color_augmentation/res/" #path of the destination folder
+path3 = "F:/DGU/Codes/ScalpAnalysis/ScalpAnalysis/pca_color_augmentation/res_images/" #path of the destination folder
 idx=0
 for aug in aug_list:
     i2 = Image.fromarray(aug)
