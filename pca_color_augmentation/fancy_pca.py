@@ -1,4 +1,4 @@
-# ÃâÃ³: https://github.com/aparico/pca-color-augment
+# from: https://github.com/aparico/pca-color-augment
 
 import numpy as np
 
@@ -39,11 +39,11 @@ def fancy_pca(img, alpha_std=0.1):
     variable drawn from a Gaussian with mean zero and standard deviation 0.1.
     Therefore to each RGB image pixel Ixy = [I_R_xy, I_G_xy, I_B_xy].T
     we add the following quantity:
-    [p1, p2, p3][¥á1¥ë1, ¥á2¥ë2, ¥á3¥ë3].T
+    [p1, p2, p3][ï¿½ï¿½1ï¿½ï¿½1, ï¿½ï¿½2ï¿½ï¿½2, ï¿½ï¿½3ï¿½ï¿½3].T
 
-    Where pi and ¥ëi are ith eigenvector and eigenvalue of the 3 ¡¿ 3 covariance
-    matrix of RGB pixel values, respectively, and ¥ái is the aforementioned
-    random variable. Each ¥ái is drawn only once for all the pixels of a
+    Where pi and ï¿½ï¿½i are ith eigenvector and eigenvalue of the 3 ï¿½ï¿½ 3 covariance
+    matrix of RGB pixel values, respectively, and ï¿½ï¿½i is the aforementioned
+    random variable. Each ï¿½ï¿½i is drawn only once for all the pixels of a
     particular training image until that image is used for training again, at
     which point it is re-drawn. This scheme approximately captures an important
     property of natural images, namely, that object identity is invariant to
