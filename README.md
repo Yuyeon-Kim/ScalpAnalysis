@@ -63,7 +63,7 @@ $I_p^B = I_i^B + (M_r^B - M_i^B) + (L_i - L_r)$
 ## **결과**  
 사용자 입력 파라미터를 출력 이미지 수를 5로, 붉은색 처리 범위를 -20%~20%로 하였다. 붉은 색이 랜덤으로 첨가되어 붉은색 제거가 되지 않은 것을 CNN 학습에 영향을 덜 미치도록 하였다.
 
-| Category | Original Image | After Normalization |  
+| Category | Original Image | After Red Addition and Augmentation |  
 | :---: | :-----: | :-------: |  
 |Red Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_4.jpg" style="width: 19%; height: auto" />|  
 |Yello Image| <img src="./test_images/0556_A2LEBJJDE00041T_1602840515292_2_TH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_4.jpg" style="width: 19%; height: auto" /> |  
@@ -96,7 +96,7 @@ $I_p = I_{xy} + [p_1, p_2, p_3][\alpha _1\lambda _1, \alpha _2\lambda _2, \alpha
 ## **결과**  
 육안상의 차이는 크지 않으나, 미세한 RGB 값의 조정이 되었다. 네트워크에서는 이를 감지할 수 있다.
 
-| Category | Original Image | After Normalization |  
+| Category | Original Image | After PCA Augmentation |  
 | :---: | :-----: | :-----: |  
 |Red Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" /> |  
 |Yello Image| <img src="./test_images/0556_A2LEBJJDE00041T_1602840515292_2_TH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_1.jpg" /> |  
