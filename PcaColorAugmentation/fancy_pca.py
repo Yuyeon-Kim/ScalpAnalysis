@@ -100,6 +100,7 @@ def fancy_pca(img, alpha_std=0.1):
     # print("values to be added matrix") # to see values added
     # print(add_vect)
 
+    orig_img /= 255.0
     for idx in range(3):   # RGB
         orig_img[..., idx] += add_vect[idx]
 
@@ -110,7 +111,7 @@ def fancy_pca(img, alpha_std=0.1):
     # orig_img /= 255.0
     orig_img = np.clip(orig_img, 0.0, 255.0)
 
-    # orig_img *= 255
+    orig_img *= 255
     orig_img = orig_img.astype(np.uint8)
 
     # about 100x faster after vectorizing the numpy, it will be even faster later
