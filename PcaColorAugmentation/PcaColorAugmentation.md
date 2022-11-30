@@ -30,7 +30,7 @@ batch.py 코드 설명
 
 | Original Image | After Augmentation |
 | :-----: | :-----: |
-| <img src="../ColorPreprocessing/test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" /> |
+| <img src="../test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" /> |
 
 코드 실행 방법
 --------------
