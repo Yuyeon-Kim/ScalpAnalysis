@@ -74,7 +74,7 @@ if __name__ == "__main__":
     input_image_path.append(input_path + "/Training/alopecia_3")
 
     # 출력 이미지
-    output_path = "F:/Datasets/scalpDatasets/AIHub/Preprocess/preprocess6"
+    output_path = "F:/Datasets/scalpDatasets/AIHub/Preprocess/preprocess10"
     output_image_path = [] 
     output_image_path.append(output_path + "/Training/alopecia_0/")
     output_image_path.append(output_path + "/Training/alopecia_1/")
