@@ -1,5 +1,5 @@
 # ScalpAnalysis
-2022년도 2학기 두피 분석 개별연구 수업을 하며 작성하였습니다. 본 수업을 들으며 연구한 내용은 [피부 톤 일반화(Normalize skin tone)](#1-피부-톤-일반화-normalize-skin-tone), [붉은색 첨가 및 증강 (Red Addition and Augmentation)](#2-붉은색-첨가-및-증강-red-addition-and-augmentation), [PCA Augmentation](#3-pca-augmentation)이다.
+2022년도 2학기 두피 분석 개별연구 수업을 하며 작성하였습니다. 본 수업을 들으며 연구한 내용은 [피부 톤 일반화(Normalize skin tone)](#1-피부-톤-일반화-normalize-skin-tone), [붉은색 첨가 및 증강 (Red Addition and Augmentation)](#2-붉은색-첨가-및-증강-red-addition-and-augmentation), [PCA Augmentation](#3-pca-augmentation)입니다.
 
 # 1. 피부 톤 일반화 (Normalize Skin Tone)  
 ## **개요**  
