@@ -48,6 +48,8 @@ $I_p = I_i + (M_r - M_i) + (L_i - L_r)$
     - $N$: 출력 이미지 수(입력 이미지를 몇개로 증강할 것인지) (e.g., 5)
     - $raito$: 붉은색 처리 최소 및 최대 값 (e.g., [-0.2, 0.2])
 
+- 입력 이미지를 처리하는 과정은 다음과 같다.  
+
 $I_p = [I_p^R,I_p^G,I_p^B]$  
 
 $I_p^R = I_i^R + (M_r^R - M_i^R) + (L_i - L_r) + \gamma \times M_r^R,(\gamma \mid \gamma \in raito)$  
@@ -63,25 +65,44 @@ $I_p^B = I_i^B + (M_r^B - M_i^B) + (L_i - L_r)$
 
 | Category | Original Image | After Normalization |  
 | :---: | :-----: | :-------: |  
-|Red Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_2.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_3.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_4.jpg" style="width: 19%; height: auto" />|  
-|Yello Image| <img src="./test_images/0556_A2LEBJJDE00041T_1602840515292_2_TH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_1.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_2.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_3.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_4.jpg" style="width: 19%; height: auto" /> |  
-|Referamce Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604675694014_3_TH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_1.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_2.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_3.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_4.jpg" style="width: 19%; height: auto" /> |  
-|Green Image| <img src="./test_images/0643_A2LEBJJDE00048F_1606711282919_5_RH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_1.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_2.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_3.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_4.jpg" style="width: 19%; height: auto" /> |  
-|Blue Image| <img src="./test_images/0556_A2LEBJJDE00041T_1603440289458_4_LH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_1.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_2.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_3.jpg" style="width: 19%; height: auto" /><img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_4.jpg" style="width: 19%; height: auto" /> |  
+|Red Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_4.jpg" style="width: 19%; height: auto" />|  
+|Yello Image| <img src="./test_images/0556_A2LEBJJDE00041T_1602840515292_2_TH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_4.jpg" style="width: 19%; height: auto" /> |  
+|Referamce Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604675694014_3_TH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_4.jpg" style="width: 19%; height: auto" /> |  
+|Green Image| <img src="./test_images/0643_A2LEBJJDE00048F_1606711282919_5_RH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_4.jpg" style="width: 19%; height: auto" /> |  
+|Blue Image| <img src="./test_images/0556_A2LEBJJDE00041T_1603440289458_4_LH.jpg" /> | <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_0.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_1.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_2.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_3.jpg" style="width: 19%; height: auto" /> <img src="./ColorPreprocessing/red_transform_res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_4.jpg" style="width: 19%; height: auto" /> |  
   
 ## **코드**  
 - [세부 내용 및 사용법](ColorPreprocessing/redTransform.md)  
 - [코드](ColorPreprocessing/redTransform.py)  
 
-# 3. pca Augmentation  
+# 3. PCA Augmentation  
 ## **개요** 
-
+다양한 색상 변환을 위해 [ImageNet](https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)에 쓰인 PCA Augmentation 기법을 사용했다. [fancy pca](https://github.com/aparico/pca-color-augment) 코드를 참고했다.
 
 ## **알고리즘**
 
-<!-- 이미지의 RGB 값이다.   -->
- 
-<!-- $$ -->
+- 사용자 입력은 다음과 같다.  
+    - $\alpha$: 분산 (e.g., 0.3)  
+
+- 입력 이미지를 처리하는 과정은 다음과 같다.  
+
+$I_{xy} = [ I  _{xy} ^{R} ,I  _{xy} ^{G} ,I  _{xy} ^{B}]^T$  
+
+$I_p = I_{xy} + [p_1, p_2, p_3][\alpha _1\lambda _1, \alpha _2\lambda _2, \alpha _3\lambda _3]$  
+
+이미지에 RGB 픽셀값의 3×3 공분산 행렬의 고유 벡터와 고유 값 $p_i$, $\lambda _i$와 분산 $\alpha _i$를 위의 수식과 같이 행렬곱해 더한다.
+
+
+## **결과**  
+육안상의 차이는 크지 않으나, 미세한 RGB 값의 조정이 되었다. 네트워크에서는 이를 감지할 수 있다.
+
+| Category | Original Image | After Normalization |  
+| :---: | :-----: | :-----: |  
+|Red Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604282955299_4_LH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0131_A2LEBJJDE00166C_1604282955299_4_LH_1.jpg" /> |  
+|Yello Image| <img src="./test_images/0556_A2LEBJJDE00041T_1602840515292_2_TH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0556_A2LEBJJDE00041T_1602840515292_2_TH_1.jpg" /> |  
+|Referamce Image| <img src="./test_images/0131_A2LEBJJDE00166C_1604675694014_3_TH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0131_A2LEBJJDE00166C_1604675694014_3_TH_1.jpg" /> |  
+|Green Image| <img src="./test_images/0643_A2LEBJJDE00048F_1606711282919_5_RH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0643_A2LEBJJDE00048F_1606711282919_5_RH_1.jpg" /> |  
+|Blue Image| <img src="./test_images/0556_A2LEBJJDE00041T_1603440289458_4_LH.jpg" /> | <img src="./PcaColorAugmentation/res_images/0556_A2LEBJJDE00041T_1603440289458_4_LH_1.jpg" /> | 
 
 ## **코드**  
 - [세부 내용 및 사용법](PcaColorAugmentation/PcaColorAugmentation.md)  
